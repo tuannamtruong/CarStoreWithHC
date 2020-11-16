@@ -1,0 +1,44 @@
+﻿@model ServerHealthViewModel
+<h2>Server Monitoring</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Server</th>
+            <th>Liveness</th>
+            <th>Readiness</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Main Server</td>
+            @if (Model != null)
+            {
+                <td>@Model.MainLiveness</td>
+                <td>@Model.MainReadiness</td>
+            }
+            else
+            {
+                <td>N/A</td>
+                <td>N/A</td>
+            }
+        </tr>
+        <tr>
+            <td>Backup Server</td>
+            @if (Model != null)
+            {
+                <td>@Model.BackupLiveness</td>
+                <td>@Model.BackupReadiness</td>
+            }
+            else
+            {
+                <td>N/A</td>
+                <td>N/A</td>
+            }
+        </tr>
+    </tbody>
+</table>
+<div class="text-center">
+    <a class="btn btn-primary" asp-action="UseNoServer" asp-controller="Test">No Server</a>
+    <a class="btn btn-primary" asp-action="UseMainServer" asp-controller="Test">User Main Server</a>
+    <a class="btn btn-primary" asp-action="UseBackupServer" asp-controller="Test">User Backup Server</a>
+</div>

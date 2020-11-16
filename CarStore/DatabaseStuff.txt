@@ -1,0 +1,19 @@
+Initial DB migration
+dotnet ef migrations add Initial
+
+Add new Model
+dotnet ef migrations add <DBSetName or w.e.>
+
+After changing attriubte of a Model
+dotnet ef migrations add <Name>
+ApplicationDbContext context = app.ApplicationServices.GetRequiredService<ApplicationDbContext>();
+context.Database.Migrate();
+			
+New DbContext
+Create new migration for database <NEWDBContext>
+dotnet ef migrations add Initial --context <NEWDBContext>
+After EF Core generate the initial migration, create the database and run the migration commands
+dotnet ef database update --context <NEWDBContext>
+
+
+

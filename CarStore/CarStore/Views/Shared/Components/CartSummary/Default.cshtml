@@ -1,0 +1,14 @@
+﻿@model Cart
+<div class="">
+    @if (Model.GetPickedItems.Count() > 0)
+    {
+        <small class="navbar-text text-light">
+            Your Cart:
+            @Model.GetTotalPrice().ToString("c");
+            @Model.GetPickedItems.Sum(x => x.Amount) item(s);
+        </small>
+    }
+    <a class="btn btn-sm btn-secondary navbar-btn" asp-controller="Cart" asp-action="Index" asp-route-returnUrl="@ViewContext.HttpContext.Request.PathAndQuery()">
+        <i class="fa fa-shopping-cart"></i>
+    </a>
+</div>
